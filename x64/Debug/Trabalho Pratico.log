@@ -1,0 +1,12 @@
+﻿  Listas.c
+E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\Dados.h(9,1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\Dados.h(37,2): warning C4091: 'typedef ': ignored on left of 'OperationMachine' when no variable is declared
+E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\Dados.h(42,2): warning C4091: 'typedef ': ignored on left of 'Machine' when no variable is declared
+E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\Listas.c(36,20): warning C4047: '==': 'int [1]' differs in levels of indirection from 'int'
+E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\Listas.c(63,26): warning C4047: 'function': 'int' differs in levels of indirection from 'int [1]'
+E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\Listas.c(63,22): warning C4024: 'ExisteJob': different types for formal and actual parameter 2
+  main.c
+E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\Dados.h(9,1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\Dados.h(37,2): warning C4091: 'typedef ': ignored on left of 'OperationMachine' when no variable is declared
+E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\Dados.h(42,2): warning C4091: 'typedef ': ignored on left of 'Machine' when no variable is declared
+E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\main.c(21,14): error C2198: 'readjobs': too few arguments for call

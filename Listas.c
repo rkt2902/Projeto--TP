@@ -11,8 +11,8 @@
 #include <string.h>
 #include "Dados.h"
 
-int readjobs() {
-	int a;
+int readjobs(int id) {
+	
 	FILE* ptr = fopen("jobs.txt", "r");
 
 	if (ptr == NULL) {
@@ -20,8 +20,10 @@ int readjobs() {
 		return 0;
 	}
 
-	fscanf(ptr, "%d", &a);
-	return a;
+	fscanf(ptr, "%d", &id);
+	printf("%d", id);
+	return id;
+	
 }
 
 

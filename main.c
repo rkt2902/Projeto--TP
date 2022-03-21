@@ -13,16 +13,15 @@
 
 
 int main() {
+	
 
 
-	int id = readjobs();
+	int a;
 
-	Job* jobs = NULL;
-	Job* job = newJob(id);
-	jobs = InsertJob(jobs, job);
+	a = readjobs();
 
 
-
+	printf("%d", a);
 
    
 

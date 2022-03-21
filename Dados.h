@@ -25,9 +25,9 @@ typedef struct Job {
 
 typedef struct Operation
 {
-    int order;
+    
     struct Operation* next;
-    //struct OperationMachine* machines;
+    struct OperationMachine* machines;
 }Op;
 
 typedef struct OperationMachine {
@@ -47,6 +47,8 @@ typedef struct Machine {
 bool ExisteJob(Job* h, int id);
 Job* newJob(int id);
 Job* InsertJob(Job* h, Job* new);
+
+
 
 //operations
 bool ExisteOperation(Op* h, int order);
