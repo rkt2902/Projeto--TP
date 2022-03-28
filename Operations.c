@@ -27,7 +27,7 @@ bool ExisteOperation(Operation* h, int order) {
 	return false;
 }
 
-Operation* newOperation(int order) {
+Operation* newOperation(int order, Machine* h) {
 
 	Operation* new = (Operation*)malloc(sizeof(Operation));
 
@@ -37,7 +37,7 @@ Operation* newOperation(int order) {
 	}
 
 	new->order = order;
-	new->Machine = NULL;
+	new->Machine = h;
 	new->next = NULL;
 
 	return new;
@@ -53,15 +53,13 @@ Operation* InsertOperationEnd(Operation* h, Operation* new)
 	else {
 		Operation* aux = h;
 		while (aux->next != NULL) {
-			new->next = aux;
+			aux = aux->next;
 		}
 
 		aux->next = new;
 	}
 	return h;
 }
-
-
 
 Job* InsertOperationOnJob(Job* h, Operation* c, int id) {
 	if (h == NULL) return NULL;
@@ -74,35 +72,32 @@ Job* InsertOperationOnJob(Job* h, Operation* c, int id) {
 	return NULL;
 }
 
-
-
-
-
-
-Operation* RemoveOperation(Operation* h, int order) {
-
+Job* RemoveOperation(Job* h, Operation* c, int id, int order) {
+	
+	
 	if (h == NULL) return NULL;			//Lista vazia
-	if (!ExisteOperation(h, order)) return h;	//se não existe
 
-	Operation* aux = h;
-	Operation* auxAnt = NULL;
 
-	//localizar registo a eliminar
-	while (aux && aux->order != order) {
-		auxAnt = aux;
-		aux = aux->next;
-	}
-	if (auxAnt == NULL) {	//Eliminar à cabeça
-		h = h->next;
+	if (h->operation->order == order ) {		//remove no inicio da lista
+		Operation* aux = h->operation;
+		h->operation = h->operation->next;
 		free(aux);
 	}
-	else					//Elimiar no meio
+	else
 	{
-		auxAnt->next = aux->next;
-		free(aux);
+		Operation* aux = h->operation;
+		Operation* auxAnt = aux;
+		while (aux && aux->order != order) {	//procura para revover
+			auxAnt = aux;
+			aux = aux->next;
+		}
+		if (aux != NULL) {					//se encontrou, remove
+			auxAnt->next = aux->next;
+			free(aux);
+		}
 	}
 	return h;
+
+
 }
-
-
 

@@ -88,7 +88,7 @@ Job* InsertJobEnd(Job* h, Job* new)
 	else {
 		Job* aux = h;
 		while (aux->next != NULL) {
-			new->next = aux;
+			aux = aux->next;
 		}
 		
 		aux->next = new;
@@ -115,51 +115,29 @@ Job* SearchJob(Job* h, int id) {
 Job* RemoveJob(Job* h, int id) {
 
 	if (h == NULL) return NULL;			//Lista vazia
-	if (!ExisteJob(h, id)) return h;	//se não existe
+//if (!ExisteJogo(h, cod)) return h;	//se não existe
 
-	Job* aux = h;
-	Job* auxAnt = NULL;
-
-	//localizar registo a eliminar
-	while (aux && aux->id != id) {
-		auxAnt = aux;
-		aux = aux->next;
-	}
-	if (auxAnt == NULL) {	//Eliminar à cabeça
+	if (h->id == id) {		//remove no inicio da lista
+		Job* aux = h;
 		h = h->next;
 		free(aux);
 	}
-	else					//Elimiar no meio
+	else
 	{
-		auxAnt->next = aux->next;
-		free(aux);
+		Job* aux = h;
+		Job* auxAnt = aux;
+		while (aux && aux->id != id) {	//procura para revover
+			auxAnt = aux;
+			aux = aux->next;
+		}
+		if (aux != NULL) {					//se encontrou, remove
+			auxAnt->next = aux->next;
+			free(aux);
+		}
 	}
 	return h;
 }
 
 
-void MostraJob(Job* nodo) {
-	if (nodo != NULL)
-	{
-		printf("id= %d\n", nodo->id);
-
-	}
-
-}
 
 
-void MostraLista(Job* h) {
-	Job* aux = h;
-	while (aux != NULL) {		
-		MostraJob(aux);
-		aux = aux->next;
-	}
-}
-
-
-
-
-
-bool ExisteJob(Job* h, int id);
-Job* newJob(int id);
-Job* InsertJobStart(Job* h, Job* new);

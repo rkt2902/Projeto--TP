@@ -1,7 +1,4 @@
-﻿  main.c
+﻿  Operations.c
 E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\Dados.h(10,1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\Dados.h(27,2): warning C4091: 'typedef ': ignored on left of 'Machinefree' when no variable is declared
-E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\main.c(30,45): warning C4133: '=': incompatible types - from 'Job *' to 'Operation *'
-E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\main.c(31,45): warning C4133: '=': incompatible types - from 'Job *' to 'Operation *'
-E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\main.c(32,44): warning C4133: '=': incompatible types - from 'Job *' to 'Operation *'
   Trabalho Pratico.vcxproj -> E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\x64\Debug\Trabalho Pratico.exe

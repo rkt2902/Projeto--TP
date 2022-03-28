@@ -50,21 +50,23 @@ typedef struct Job {
 #pragma endregion
 
 
-bool ExisteJob(Job* h, int order);
-Job* newJob(int order);
+bool ExisteJob(Job* h, int id);
+Job* newJob(int id);
 Job* InsertJobStart(Job* h, Job* new);
 Job* InsertJobEnd(Job* h, Job* new);
-Job* RemoveJob(Job* h, int order);
-void MostraJob(Job* h);
-Job* SearchJob(Job* h, int id);s
+Job* RemoveJob(Job* h, int id);
+Job* SearchJob(Job* h, int id);
 
-
+Job* RemoveOperation(Job* h, Operation* c, int id, int order);
 bool ExisteOperation(Operation* h, int order);
-Operation* newOperation(int order);
-Operation* InsertOperationStart(Operation* h, Operation* new);
+Operation* newOperation(int order, Machine* h);
 Operation* InsertOperationEnd(Operation* h, Operation* new);
-Operation* RemoveOperation(Operation* h, int order);
-void MostraOperation(Operation* h);
 Job* InsertOperationOnJob(Job* h, Operation* c, int id);
+Machine* InsertMachineOnEnd(Machine* h, Machine* new);
+Job* InsertMachineOnOperation(Job* h, Machine* c, int id, int order);
+bool ExisteMachine(Machine* h, int machineId);
+Machine* newMachine(int machineId, int time);
 
+Job* RemoveMachineOnOperation(Job* h, Machine* c, int id, int order);
+Job* RemoveMachine(Job* h, Machine* c, int id, int machineId);
 #endif
