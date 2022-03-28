@@ -6,7 +6,9 @@
 *
 */
 
+#pragma once
 #ifndef dados;
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -17,45 +19,52 @@
 #pragma region Structs
 
 
-typedef struct Job {
-    int id[1];
-    struct Operation* operations;
-    struct Job* next;
-}Job;
 
-typedef struct Operation
-{
-    
-    struct Operation* next;
-    struct OperationMachine* machines;
-}Op;
 
-typedef struct OperationMachine {
-    struct Job* job;
-    int machineId;
-    int time;
-};
-
-typedef struct Machine {
+typedef struct Machinefree {
     int id;
     int isBusy; // 1 está disponivel, 0 está ocupada;
 };
+
+typedef struct Machine {
+    int machineId;
+    int time;
+    struct Machine* next;
+}Machine;
+
+
+typedef struct Operation{
+    int order;  //ordem da operaçao
+    Machine* Machine; //todas as maquinas da operaçao
+    struct Operation* next; //Ligaçao para a prox operaçao
+}Operation;
+
+typedef struct Job {
+    int id;  //id do job
+    struct Operation* operation; //Todas as operaçoes do Job
+    struct Job* next; //Ligaçao ao proximo job
+}Job;
+
+
+
 #pragma endregion
 
-#pragma region Inicializaçao de funçoes
-//jobs
-bool ExisteJob(Job* h, int id);
-Job* newJob(int id);
-Job* InsertJob(Job* h, Job* new);
+
+bool ExisteJob(Job* h, int order);
+Job* newJob(int order);
+Job* InsertJobStart(Job* h, Job* new);
+Job* InsertJobEnd(Job* h, Job* new);
+Job* RemoveJob(Job* h, int order);
+void MostraJob(Job* h);
+Job* SearchJob(Job* h, int id);s
 
 
+bool ExisteOperation(Operation* h, int order);
+Operation* newOperation(int order);
+Operation* InsertOperationStart(Operation* h, Operation* new);
+Operation* InsertOperationEnd(Operation* h, Operation* new);
+Operation* RemoveOperation(Operation* h, int order);
+void MostraOperation(Operation* h);
+Job* InsertOperationOnJob(Job* h, Operation* c, int id);
 
-//operations
-bool ExisteOperation(Op* h, int order);
-Op* newOperation(int order);
-Op* InsertOperation(Op* h, Op* new);
-
-
-
-#pragma endregion
 #endif
