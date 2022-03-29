@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="gestaodedados.c" />
     <ClCompile Include="Jobs.c" />
     <ClCompile Include="Machines.c" />
     <ClCompile Include="main.c">

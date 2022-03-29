@@ -61,21 +61,24 @@ Machine* InsertMachineOnEnd(Machine* h, Machine* new) {
 }
 
 
-Job* InsertMachineOnOperation(Job* h, Machine* c,  int id, int order) {
-	
+Job* InsertMachineOnOperation(Job* h,Operation* t, Machine* c, int id, int order) {
+
 	if (h == NULL) return NULL;
+	if (t == NULL) return NULL;
 	if (c == NULL) return h;
 
 	Job* aux = SearchJob(h, id);
-	if (aux && aux->operation->order == order) {
-		aux->operation->Machine = InsertMachineOnEnd(aux->operation->Machine, c);
+	if(aux) {
+		Operation* aux1 = SearchOperation(t, order);
+		if (aux1) {
+			aux1->Machine = InsertMachineOnEnd(aux1->Machine, c);
+			nummachines++;
+		}
+		
 	}
+	
 	return NULL;
 }
-
-
-
-
 
 Job* RemoveMachine(Job* h, Machine* c, int id, int machineId) {
 
@@ -83,9 +86,10 @@ Job* RemoveMachine(Job* h, Machine* c, int id, int machineId) {
 	if (h == NULL) return NULL;			//Lista vazia
 
 
-	if (h->operation->Machine->machineId == machineId) {		//remove no inicio da lista
+	if ((h->operation->Machine->machineId == machineId) ) {		//remove no inicio da lista
 		Operation* aux = h->operation;
 		h->operation = h->operation->next;
+		nummachines--;
 		free(aux);
 	}
 	else
@@ -98,12 +102,30 @@ Job* RemoveMachine(Job* h, Machine* c, int id, int machineId) {
 		}
 		if (aux != NULL) {					//se encontrou, remove
 			auxAnt->next = aux->next;
+			nummachines--;
 			free(aux);
 		}
 	}
 	return h;
 
 
+}
+
+int CountMachines(Job* h, int machineid, int order, int id)
+{
+	if (h == NULL) return NULL;
+	int c=0;
+	Job* aux = SearchJob(h, id);
+	if (aux) {
+		Operation* aux1 = SearchOperation(h, order);
+		if (aux1)
+		{
+			while (aux1->Machine->machineId == machineid) c++; machineid++;
+			aux1 = aux1->next;
+
+		}
+	}
+	return c;
 }
 
 

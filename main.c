@@ -16,8 +16,19 @@
 int main() {
 
 	setlocale(LC_ALL, "Portuguese");
+	
+	
 
-	Job *new = newJob(1);
+
+
+	Job* Job1 = Readdatafromfile("data.txt");
+	
+	
+	printf("%d", numoperations);
+	printf("%d", nummachines);
+
+
+	/*Job* new = newJob(1);
 	Job *two = newJob(2);
 	Job *novo = newJob(3);
 	Job* seven = newJob(7);
@@ -30,7 +41,7 @@ int main() {
 
 	//Machine* primeira = newMachine(5, 3);
 
-	Operation* nova = newOperation(1, NULL);	
+	Operation* nova = newOperation(1, NULL);
 	Operation* atwo = newOperation(2, NULL);
 	Operation* aatwo = newOperation(3, NULL);
 	Operation* hey = newOperation(4, NULL);
@@ -41,9 +52,9 @@ int main() {
 	First = InsertOperationOnJob(Job1, aatwo, 1);
 	First = InsertOperationOnJob(Job1, hey, 1);
 
-	First = RemoveOperation(Job1, First, 1, 2);
+	//First = RemoveOperation(Job1, First, 1, 2);
 
-	
+
 
 	Machine* um = newMachine(1, 1);
 	Machine* uma = newMachine(2, 2);
@@ -51,14 +62,14 @@ int main() {
 	Machine* umd = newMachine(4, 4);
 	Machine* aaa = NULL;
 
-	aaa = InsertMachineOnOperation(Job1, um, 2, 2);
-	aaa = InsertMachineOnOperation(Job1, uma, 2, 2);
-	aaa = InsertMachineOnOperation(Job1, ums, 2, 2);
-	aaa = InsertMachineOnOperation(Job1, umd, 2, 2);
+	aaa = InsertMachineOnOperation(Job1, um, 1, 1);
+	aaa = InsertMachineOnOperation(Job1, uma, 1, 1);
+	aaa = InsertMachineOnOperation(Job1, ums, 1, 1);
+	aaa = InsertMachineOnOperation(Job1, umd, 1, 1);
+
+
+	aaa = RemoveMachine(Job1, uma, 1, 2);//??*/
 
 	
-	
-
-
 }
 

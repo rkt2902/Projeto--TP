@@ -14,6 +14,9 @@
 #include <stdbool.h>
 #include <locale.h>
 
+int numoperations;
+int nummachines;
+
 
 
 #pragma region Structs
@@ -47,6 +50,7 @@ typedef struct Job {
 
 
 
+
 #pragma endregion
 
 
@@ -63,10 +67,12 @@ Operation* newOperation(int order, Machine* h);
 Operation* InsertOperationEnd(Operation* h, Operation* new);
 Job* InsertOperationOnJob(Job* h, Operation* c, int id);
 Machine* InsertMachineOnEnd(Machine* h, Machine* new);
-Job* InsertMachineOnOperation(Job* h, Machine* c, int id, int order);
+Job* InsertMachineOnOperation(Job* h, Operation* t, Machine* c, int id, int order);
 bool ExisteMachine(Machine* h, int machineId);
 Machine* newMachine(int machineId, int time);
+Operation* SearchOperation(Operation* h, int order);
 
-Job* RemoveMachineOnOperation(Job* h, Machine* c, int id, int order);
+Savedataonfile(char* nomeFicheiro, Job* h);
 Job* RemoveMachine(Job* h, Machine* c, int id, int machineId);
+Readdatafromfile(char* nomeFicheiro);
 #endif

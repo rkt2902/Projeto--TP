@@ -68,6 +68,7 @@ Job* InsertOperationOnJob(Job* h, Operation* c, int id) {
 	Job* aux = SearchJob(h, id);
 	if (aux) {
 		aux->operation = InsertOperationEnd(aux->operation, c);
+		numoperations++;
 	}
 	return NULL;
 }
@@ -81,6 +82,7 @@ Job* RemoveOperation(Job* h, Operation* c, int id, int order) {
 	if (h->operation->order == order ) {		//remove no inicio da lista
 		Operation* aux = h->operation;
 		h->operation = h->operation->next;
+		numoperations--;
 		free(aux);
 	}
 	else
@@ -90,9 +92,11 @@ Job* RemoveOperation(Job* h, Operation* c, int id, int order) {
 		while (aux && aux->order != order) {	//procura para revover
 			auxAnt = aux;
 			aux = aux->next;
+			
 		}
 		if (aux != NULL) {					//se encontrou, remove
 			auxAnt->next = aux->next;
+			numoperations--;
 			free(aux);
 		}
 	}
@@ -101,3 +105,17 @@ Job* RemoveOperation(Job* h, Operation* c, int id, int order) {
 
 }
 
+Operation* SearchOperation(Operation* h, int order) {
+	if (h == NULL) return NULL;		//lista vazia
+	else
+	{
+		Operation* aux = h;
+		while (aux != NULL) {
+			if (aux->order == order) {
+				return (aux);		//encontrei
+			}
+			aux = aux->next;
+		}
+		return NULL;
+	}
+}
