@@ -1,9 +1,13 @@
 /**
-* Author: Henrique Azevedo
-* Email: henrique.aazevedo29@gmail.com
-* Date: 19-03-2022
-* Desc: Execução de funções
-*
+*  @file main.c
+ * @author Henrique Azevedo
+ * @email henrique.aazevedo29@gmail.com
+ * @date 2022
+ * @brief Trabalho Pratico
+ *
+ *	Manipulação Das estruturas dinamicas de dados.
+
+ * @bug bugs desconhecidos.
 */
 
 #include <stdio.h>
@@ -17,58 +21,21 @@ int main() {
 
 	setlocale(LC_ALL, "Portuguese");
 	
+	Job* Job1 = Readdatatxt("data.txt");
 	
+	//Job* Job1 = ReadbinFile("datab.bin");
 
+	int min = getmintime(Job1);
+	int max = getmaxtime(Job1);
+	int avg = getavgtime(Job1);
 
-
-	Job* Job1 = Readdatafromfile("data.txt");
 	
+	//SavebinFile("datab.bin", Job1);
 	
-	printf("%d", numoperations);
-	printf("%d", nummachines);
+	Savedatatxt("data.txt", Job1);
 
-
-	/*Job* new = newJob(1);
-	Job *two = newJob(2);
-	Job *novo = newJob(3);
-	Job* seven = newJob(7);
-
-	Job *Job1 = NULL;
-	Job1 = InsertJobEnd(Job1, new);
-	Job1 = InsertJobEnd(Job1, two);
-	Job1 = InsertJobEnd(Job1, novo);
-	Job1 = InsertJobEnd(Job1, seven);
-
-	//Machine* primeira = newMachine(5, 3);
-
-	Operation* nova = newOperation(1, NULL);
-	Operation* atwo = newOperation(2, NULL);
-	Operation* aatwo = newOperation(3, NULL);
-	Operation* hey = newOperation(4, NULL);
-	Operation* First = NULL;
-
-	First = InsertOperationOnJob(Job1, nova, 1);
-	First = InsertOperationOnJob(Job1, atwo, 1);
-	First = InsertOperationOnJob(Job1, aatwo, 1);
-	First = InsertOperationOnJob(Job1, hey, 1);
-
-	//First = RemoveOperation(Job1, First, 1, 2);
-
-
-
-	Machine* um = newMachine(1, 1);
-	Machine* uma = newMachine(2, 2);
-	Machine* ums = newMachine(3, 3);
-	Machine* umd = newMachine(4, 4);
-	Machine* aaa = NULL;
-
-	aaa = InsertMachineOnOperation(Job1, um, 1, 1);
-	aaa = InsertMachineOnOperation(Job1, uma, 1, 1);
-	aaa = InsertMachineOnOperation(Job1, ums, 1, 1);
-	aaa = InsertMachineOnOperation(Job1, umd, 1, 1);
-
-
-	aaa = RemoveMachine(Job1, uma, 1, 2);//??*/
+	int c = CountMachines(Job1, 1, 1);
+	
 
 	
 }

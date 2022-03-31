@@ -1,17 +1,33 @@
-﻿  gestaodedados.c
+﻿  Jobs.c
 E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\Dados.h(10,1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\Dados.h(30,2): warning C4091: 'typedef ': ignored on left of 'Machinefree' when no variable is declared
-E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\gestaodedados.c(17,5): error C2371: 'Readdatafromfile': redefinition; different basic types
-E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\Dados.h(77): message : see declaration of 'Readdatafromfile'
-E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\gestaodedados.c(24,9): warning C4013: 'getche' undefined; assuming extern returning int
-E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\gestaodedados.c(25,13): error C2440: 'return': cannot convert from 'int' to 'Job'
-E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\gestaodedados.c(52,48): warning C4133: '=': incompatible types - from 'Job *' to 'Operation *'
-E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\gestaodedados.c(61,71): warning C4133: '=': incompatible types - from 'Job *' to 'Machine *'
-E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\gestaodedados.c(66,70): warning C4133: '=': incompatible types - from 'Job *' to 'Machine *'
-E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\gestaodedados.c(71,70): warning C4133: '=': incompatible types - from 'Job *' to 'Machine *'
-E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\gestaodedados.c(76,70): warning C4133: '=': incompatible types - from 'Job *' to 'Machine *'
-E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\gestaodedados.c(81,70): warning C4133: '=': incompatible types - from 'Job *' to 'Machine *'
-E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\gestaodedados.c(86,70): warning C4133: '=': incompatible types - from 'Job *' to 'Machine *'
-E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\gestaodedados.c(91,70): warning C4133: '=': incompatible types - from 'Job *' to 'Machine *'
-E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\gestaodedados.c(96,70): warning C4133: '=': incompatible types - from 'Job *' to 'Machine *'
-E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\gestaodedados.c(109,13): error C2440: 'return': cannot convert from 'Job *' to 'Job'
+  Machines.c
+E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\Dados.h(10,1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\Machines.c(190,28): warning C4047: 'return': 'int' differs in levels of indirection from 'void *'
+  Operations.c
+E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\Dados.h(10,1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  armazenamentodados.c
+E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\Dados.h(10,1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\armazenamentodados.c(34,9): warning C4013: 'getche' undefined; assuming extern returning int
+E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\armazenamentodados.c(35,13): warning C4047: 'return': 'Job *' differs in levels of indirection from 'int'
+E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\armazenamentodados.c(62,48): warning C4133: '=': incompatible types - from 'Job *' to 'Operation *'
+E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\armazenamentodados.c(71,71): warning C4133: '=': incompatible types - from 'Job *' to 'Machine *'
+E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\armazenamentodados.c(76,70): warning C4133: '=': incompatible types - from 'Job *' to 'Machine *'
+E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\armazenamentodados.c(81,70): warning C4133: '=': incompatible types - from 'Job *' to 'Machine *'
+E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\armazenamentodados.c(86,70): warning C4133: '=': incompatible types - from 'Job *' to 'Machine *'
+E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\armazenamentodados.c(91,70): warning C4133: '=': incompatible types - from 'Job *' to 'Machine *'
+E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\armazenamentodados.c(96,70): warning C4133: '=': incompatible types - from 'Job *' to 'Machine *'
+E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\armazenamentodados.c(101,70): warning C4133: '=': incompatible types - from 'Job *' to 'Machine *'
+E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\armazenamentodados.c(106,70): warning C4133: '=': incompatible types - from 'Job *' to 'Machine *'
+E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\armazenamentodados.c(141,13): warning C4047: 'return': 'Job *' differs in levels of indirection from 'int'
+E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\armazenamentodados.c(183,13): warning C4047: 'return': 'Job *' differs in levels of indirection from 'int'
+E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\armazenamentodados.c(134,7): warning C4101: 'c': unreferenced local variable
+E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\armazenamentodados.c(230,13): warning C4047: 'return': 'Job *' differs in levels of indirection from 'int'
+E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\armazenamentodados.c(262,45): warning C4133: '=': incompatible types - from 'Job *' to 'Operation *'
+E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\armazenamentodados.c(268,70): warning C4133: '=': incompatible types - from 'Job *' to 'Machine *'
+  gestor.c
+E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\Dados.h(10,1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\gestor.c(94,28): warning C4047: 'return': 'int' differs in levels of indirection from 'void *'
+  Generating Code...
+  main.c
+E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\Dados.h(10,1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Trabalho Pratico.vcxproj -> E:\EDJD - 2 Semestre\EDA\Trabalho Pratico\Projeto-\x64\Debug\Trabalho Pratico.exe

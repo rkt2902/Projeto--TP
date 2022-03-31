@@ -21,13 +21,43 @@ int nummachines;
 
 #pragma region Structs
 
+/**
+ * @brief Estrutura para armazenar uma Machine sem apontador.
+ *
+ * Um jogo contém um machineId (@@machineId), Tempo (@@time).
+ */
+typedef struct MachineFile {
+    int machineId;
+    int time;
 
+}MachineFile;
+/**
+ * @brief Estrutura para armazenar uma Operation sem apontador.
+ *
+ * Um jogo contém uma order (@@order).
+ */
+typedef struct OperationFile {
+    int order;
 
+}OperationFile;
 
-typedef struct Machinefree {
+/**
+ * @brief Estrutura para armazenar um Job sem apontador.
+ *
+ * Um jogo contém um Identificador (@@id).
+ */
+typedef struct JobFile {
     int id;
-    int isBusy; // 1 está disponivel, 0 está ocupada;
-};
+}JobFile;
+
+
+
+/**
+ * @brief Estrutura para armazenar uma Machine
+ *
+ * Uma Maquina contém um MachineId (@@machineId), tempo (@@time).
+ * Contém apontador para próxima MAchine
+ */
 
 typedef struct Machine {
     int machineId;
@@ -35,13 +65,26 @@ typedef struct Machine {
     struct Machine* next;
 }Machine;
 
+/**
+ * @brief Estrutura para armazenar uma Operation
+ *
+ * Uma Operation contém um Order(@@order)
+ *  Contem apontador para Lista das Maquinas.
+ * Contém apontador para próxima operaçao.
+ */
 
 typedef struct Operation{
     int order;  //ordem da operaçao
     Machine* Machine; //todas as maquinas da operaçao
     struct Operation* next; //Ligaçao para a prox operaçao
 }Operation;
-
+/**
+ * @brief Estrutura para armazenar um Job.
+ *
+ * Um Job contém um Id(@@id)
+ *  Contem apontador para Lista das Operation
+ * Contém apontador para próximo job.
+ */
 typedef struct Job {
     int id;  //id do job
     struct Operation* operation; //Todas as operaçoes do Job
@@ -53,26 +96,47 @@ typedef struct Job {
 
 #pragma endregion
 
-
+#pragma region Functions 
+//Job Functions
 bool ExisteJob(Job* h, int id);
 Job* newJob(int id);
 Job* InsertJobStart(Job* h, Job* new);
 Job* InsertJobEnd(Job* h, Job* new);
 Job* RemoveJob(Job* h, int id);
 Job* SearchJob(Job* h, int id);
+Job* ChangeJob(Job* h, int id, Job* new);
 
+
+//Operation Functions
 Job* RemoveOperation(Job* h, Operation* c, int id, int order);
 bool ExisteOperation(Operation* h, int order);
 Operation* newOperation(int order, Machine* h);
 Operation* InsertOperationEnd(Operation* h, Operation* new);
 Job* InsertOperationOnJob(Job* h, Operation* c, int id);
+Operation* SearchOperation(Operation* h, int order);
+Job* ChangeOperation(Job* h, int order, Operation* new);
+
+//Machine Functions
 Machine* InsertMachineOnEnd(Machine* h, Machine* new);
 Job* InsertMachineOnOperation(Job* h, Operation* t, Machine* c, int id, int order);
 bool ExisteMachine(Machine* h, int machineId);
 Machine* newMachine(int machineId, int time);
-Operation* SearchOperation(Operation* h, int order);
-
-Savedataonfile(char* nomeFicheiro, Job* h);
+Job* Changemachine(Job* h, int machineid, Machine* new);
 Job* RemoveMachine(Job* h, Machine* c, int id, int machineId);
-Readdatafromfile(char* nomeFicheiro);
+
+//Read and Save
+Job* Savedatatxt(char* nomeFicheiro, Job* h);
+Job* Readdatatxt(char* nomeFicheiro);
+Job* SavebinFile(char* nomeFicheiro, Job* h);
+Job* ReadbinFile(char* nomeFicheiro);
+
+
+//Get Machine Data
+int getmintime(Job* h);
+int getmaxtime(Job* h);
+int getavgtime(Job* h);
+int CountMachines(Job* h, int id, int order);
+
+#pragma endregion
+
 #endif

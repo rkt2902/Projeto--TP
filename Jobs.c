@@ -1,11 +1,14 @@
 /**
-* Author: Henrique Azevedo
-* Email: henrique.aazevedo29@gmail.com
-* Date: 19-03-2022
-* Desc: Jobs 
-*
-*/
+*  @file Jobs.c
+ * @author Henrique Azevedo
+ * @email henrique.aazevedo29@gmail.com
+ * @date 2022
+ * @brief Trabalho Pratico
+ *
+ *	Operaçoes responsaveis pela Criação/Modificaçao da Estrutura Dinamica ligada aos Jobs.
 
+ * @bug bugs desconhecidos.
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -14,7 +17,12 @@
 
 
 
-
+/**
+* @brief Verifica se job existe. Se existir devolve Bool!
+* @param [in] h		Inicio da Lista
+* @param [in] id	código do job a procurar
+* @return	True/False
+*/
 bool ExisteJob(Job* h, int id) {
 	if (h == NULL) return false;
 	Job* aux = h;
@@ -25,7 +33,14 @@ bool ExisteJob(Job* h, int id) {
 	}
 	return false;
 }
-
+/**
+*	@brief Cria novo Job.
+*
+*	Aloca memória necessária para armazenar um Job em memória
+*
+*	@param id ID do Job
+*
+*/
 Job* newJob(int id) {
 	
 	
@@ -43,8 +58,12 @@ Job* newJob(int id) {
 
 	return newjob;
 }
-
-
+/**
+* @brief Insere um novo Job no início da estrutura
+* @param [in] h		Inicio da Lista
+* @param [in] new	Novo Job a inserir
+* @return	Inicio da Lista
+*/
 Job* InsertJobStart(Job* h, Job* new) {
 	
 	if (ExisteJob(h, new->id)) return h;	
@@ -60,24 +79,12 @@ Job* InsertJobStart(Job* h, Job* new) {
 	}
 	return h;
 }
-
-Job* Insertmiddle(Job* h, Job* new) {
-
-	if (ExisteJob(h, new->id)) return h;
-
-	if (h == NULL)
-	{
-		h = new;
-	}
-	else
-	{
-	
-		//falta isto tolo
-	}
-	return h;
-
-}
-
+/**
+* @brief Insere Job no final da lista
+* @param [in] h		Inicio da Lista
+* @param [in] nnew	Novo Job a inserir
+* @return	Inicio da Lista
+*/
 Job* InsertJobEnd(Job* h, Job* new)
 {
 	if (ExisteJob(h, new->id)) return h;
@@ -94,8 +101,12 @@ Job* InsertJobEnd(Job* h, Job* new)
 		aux->next = new;
 	}
 	return h;
-}
-
+}/**
+* @brief Verifica se Job existe. Se existir devolve endereço Job!
+* @param [in] h		Inicio da Lista
+* @param [in] id	ID do Job a procurar
+* @return	Apontador para Job encontrado
+*/
 Job* SearchJob(Job* h, int id) {
 	if (h == NULL) return NULL;		//lista vazia
 	else
@@ -110,8 +121,28 @@ Job* SearchJob(Job* h, int id) {
 		return NULL;
 	}
 }
+/**
+* @brief Altera tipo de Job
+* @param [in]	h	Apontador para inicio da Lista
+* @param [in]	id	ID do Job a alterar
+* @return	Apontador para Lista
+*/
+Job* ChangeJob(Job* h, int id, Job* new) {
+	if (h == NULL) return NULL;
+	if (new == NULL) return h;
 
-
+	Job* aux = SearchJob(h, id);
+	if (aux) {
+		aux->id = new->id;
+	}
+	return h;
+}
+/**
+* @brief Remove Job. 
+* @param [in]	h	Apontador para inicio da Lista
+* @param [in]	id	ID do Job a alterar
+* @return	Apontador para Lista
+*/
 Job* RemoveJob(Job* h, int id) {
 
 	if (h == NULL) return NULL;			//Lista vazia

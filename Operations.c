@@ -1,12 +1,14 @@
-
 /**
-* Author: Henrique Azevedo
-* Email: henrique.aazevedo29@gmail.com
-* Date: 19-03-2022
-* Desc: listas
-*
-*/
+*  @file Operations.c
+ * @author Henrique Azevedo
+ * @email henrique.aazevedo29@gmail.com
+ * @date 2022
+ * @brief Trabalho Pratico
+ *
+ *	Operaçoes responsaveis pela Criação/Modificaçao da Estrutura Dinamica ligada às Operaçoes.
 
+ * @bug bugs desconhecidos.
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -15,7 +17,12 @@
 
 
 
-
+/**
+* @brief Verifica se a operaçao existe. Se existir devolve Bool!
+* @param [in] h		Inicio da Lista
+* @param [in] order	código do Operation a procurar
+* @return	True/False
+*/
 bool ExisteOperation(Operation* h, int order) {
 	if (h == NULL) return false;
 	Operation* aux = h;
@@ -26,7 +33,14 @@ bool ExisteOperation(Operation* h, int order) {
 	}
 	return false;
 }
-
+/**
+*	@brief Cria nova Operation.
+*
+*	Aloca memória necessária para armazenar um Operation em memória
+*
+*	@param order Ordem da Operation
+*
+*/
 Operation* newOperation(int order, Machine* h) {
 
 	Operation* new = (Operation*)malloc(sizeof(Operation));
@@ -42,7 +56,12 @@ Operation* newOperation(int order, Machine* h) {
 
 	return new;
 }
-
+/**
+* @brief Insere Operation no final da lista
+* @param [in] h		Inicio da Lista
+* @param [in] new	Nova Operation a inserir
+* @return	Inicio da Lista
+*/
 Operation* InsertOperationEnd(Operation* h, Operation* new)
 {
 	if (ExisteOperation(h, new->order)) return h;
@@ -59,8 +78,13 @@ Operation* InsertOperationEnd(Operation* h, Operation* new)
 		aux->next = new;
 	}
 	return h;
-}
-
+}/**
+* @brief Insere Operation no final da Lista dentro de um Job
+* @param [in] h		Inicio da Lista de Jobs
+* @param [in] hc	Inicio da Lista de Operaçoes
+* @param [in] id	id do Jobs onde é desejado inserir operaçao
+* @return	NULL
+*/
 Job* InsertOperationOnJob(Job* h, Operation* c, int id) {
 	if (h == NULL) return NULL;
 	if (c == NULL) return h;
@@ -72,7 +96,45 @@ Job* InsertOperationOnJob(Job* h, Operation* c, int id) {
 	}
 	return NULL;
 }
+/**
+* @brief Altera tipo de Operation
+* @param [in]	h	Apontador para inicio da Lista de Jobs
+* @param [in]	order	Ordem da Operation a alterar
+*  @param [in]	c	Apontador para inicio da Lista  Nova de Operaçoes que pretende alterar
+* @return	Apontador para Lista de Jobs
+*/
+Job* ChangeOperation(Job* h, int order, Operation* new) {
 
+	if (h == NULL) return NULL;
+	if (new == NULL) return h;
+
+	Job* aux = h;
+
+	while (aux) {
+
+		Operation* aux1 = aux->operation;
+
+		while (aux1) {
+
+			if (aux1->order == order) {
+
+				aux1->order = new->order;
+			}
+			aux1 = aux1->next;
+		}
+		aux = aux->next;
+	}
+
+	return h;
+}
+/**
+* @brief Remove Operation.
+* @param [in]	h	Apontador para inicio da Lista de JObs
+* @param [in]	c	Apontador para inicio da Lista de Operations
+* @param [in]	id	Ordem do id do Job da Operation.
+* @param [in]	order	Ordem do Operation a remover.
+* @return	Apontador para Lista
+*/
 Job* RemoveOperation(Job* h, Operation* c, int id, int order) {
 	
 	
@@ -104,7 +166,12 @@ Job* RemoveOperation(Job* h, Operation* c, int id, int order) {
 
 
 }
-
+/**
+* @brief Procura operation
+* @param [in]	h	Apontador para inicio da Lista
+* @param [in]	order	Order do Operation a alterar
+* @return	Apontador para Lista 
+*/
 Operation* SearchOperation(Operation* h, int order) {
 	if (h == NULL) return NULL;		//lista vazia
 	else

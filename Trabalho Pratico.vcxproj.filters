@@ -27,15 +27,15 @@
     <ClCompile Include="Machines.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="gestaodedados.c">
+    <ClCompile Include="armazenamentodados.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gestor.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dados.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="functions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
