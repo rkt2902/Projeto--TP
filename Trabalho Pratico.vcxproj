@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="armazenamentodados.c" />
     <ClCompile Include="gestor.c" />
+    <ClCompile Include="Hash.c" />
     <ClCompile Include="Jobs.c" />
     <ClCompile Include="Machines.c" />
     <ClCompile Include="main.c">

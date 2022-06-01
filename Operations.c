@@ -136,35 +136,37 @@ Job* ChangeOperation(Job* h, int order, Operation* new) {
 * @return	Apontador para Lista
 */
 Job* RemoveOperation(Job* h, Operation* c, int id, int order) {
-	
-	
+
+
 	if (h == NULL) return NULL;			//Lista vazia
 
-
-	if (h->operation->order == order ) {		//remove no inicio da lista
-		Operation* aux = h->operation;
+	Operation* aux = h->operation;
+	if (h->operation->order == order) {		//remove no inicio da lista
+		
 		h->operation = h->operation->next;
 		numoperations--;
 		free(aux);
 	}
 	else
 	{
-		Operation* aux = h->operation;
 		Operation* auxAnt = aux;
 		while (aux && aux->order != order) {	//procura para revover
 			auxAnt = aux;
 			aux = aux->next;
-			
+
 		}
 		if (aux != NULL) {					//se encontrou, remove
-			auxAnt->next = aux->next;
-			numoperations--;
-			free(aux);
+			if (aux != NULL) {					//se encontrou, remove
+
+				auxAnt->next = aux->next;
+				numoperations--;
+				free(aux);
+			}
 		}
+		return h;
+
+
 	}
-	return h;
-
-
 }
 /**
 * @brief Procura operation
@@ -172,7 +174,7 @@ Job* RemoveOperation(Job* h, Operation* c, int id, int order) {
 * @param [in]	order	Order do Operation a alterar
 * @return	Apontador para Lista 
 */
-Operation* SearchOperation(Operation* h, int order) {
+Operation* SearchOperation(Operation* h, int order){
 	if (h == NULL) return NULL;		//lista vazia
 	else
 	{
@@ -185,4 +187,65 @@ Operation* SearchOperation(Operation* h, int order) {
 		}
 		return NULL;
 	}
+}
+
+
+Operation* ChangeOperationMachine(Operation* op, int order, int machineid, int time) {
+	Operation* aux = op;
+
+	if (aux == NULL) {
+		return  NULL;
+	}
+
+	while (aux) {
+		if (order == aux->order) {
+
+			Machine* aux2 = aux->Machine;
+			while (aux2) {
+				if (aux2->machineId == machineid) {
+					aux2->time = time;
+;				}
+				aux2 = aux2->next;
+			}
+		}
+		aux = aux->next;
+	}
+	return op;
+
+}
+
+/*
+*@brief	Remover uma nova operação a uma linked list Operation
+* @param	operations	Referência da head da linked list
+* @param	operation	Operação a remover
+* @return	Referência da head da linked list
+*/
+Operation * removeOperation(Operation * operations, int order) {
+
+	if (operations == NULL) {
+		return NULL;
+	}
+	if (operations->order == order) {
+		Operation* aux = operations;
+		operations = operations->next;
+
+		free(aux);
+	}
+	else {
+		Operation* aux = operations;
+		Operation* previousaux = aux;
+
+		while (aux && aux->order != order)
+		{
+			previousaux = aux;
+			aux = aux->next;
+		}
+		if (aux != NULL) {
+			previousaux->next = aux->next;
+			free(aux);
+		}
+
+	}
+	
+	return operations;
 }

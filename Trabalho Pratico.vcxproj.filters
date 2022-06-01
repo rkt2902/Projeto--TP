@@ -33,6 +33,9 @@
     <ClCompile Include="gestor.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Hash.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dados.h">

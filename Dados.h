@@ -8,7 +8,7 @@
 
 #pragma once
 #ifndef dados;
-
+#define Hash_size 8
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -91,6 +91,17 @@ typedef struct Job {
     struct Job* next; //Ligaçao ao proximo job
 }Job;
 
+/**
+ * @brief Estrutura para Usar um Job na Hash table.
+ *
+ * Um Job contém um Id(@@id)
+ *  Contem apontador para Lista das Operation
+ * Contém apontador para próximo job.
+ */
+typedef struct JobIn {
+    int id;  //id do job
+    struct Operation* operation; //Todas as operaçoes do Job
+}JobI;
 
 
 
@@ -107,6 +118,7 @@ Job* SearchJob(Job* h, int id);
 Job* ChangeJob(Job* h, int id, Job* new);
 
 
+
 //Operation Functions
 Job* RemoveOperation(Job* h, Operation* c, int id, int order);
 bool ExisteOperation(Operation* h, int order);
@@ -115,6 +127,8 @@ Operation* InsertOperationEnd(Operation* h, Operation* new);
 Job* InsertOperationOnJob(Job* h, Operation* c, int id);
 Operation* SearchOperation(Operation* h, int order);
 Job* ChangeOperation(Job* h, int order, Operation* new);
+Operation* ChangeOperationMachine(Operation* op, int order, int time, int machineid);
+Operation* removeOperation(Operation* operations, int order);
 
 //Machine Functions
 Machine* InsertMachineOnEnd(Machine* h, Machine* new);
@@ -127,8 +141,7 @@ Job* RemoveMachine(Job* h, Machine* c, int id, int machineId);
 //Read and Save
 Job* Savedatatxt(char* nomeFicheiro, Job* h);
 Job* Readdatatxt(char* nomeFicheiro);
-Job* SavebinFile(char* nomeFicheiro, Job* h);
-Job* ReadbinFile(char* nomeFicheiro);
+
 
 
 //Get Machine Data
@@ -136,7 +149,19 @@ int getmintime(Job* h);
 int getmaxtime(Job* h);
 int getavgtime(Job* h);
 int CountMachines(Job* h, int id, int order);
+int ProcessPlanMinTime(Job* table[], int size);
+int numberofJobs(Job* h);
+int numberofoperationspJob(Job* h, int id);
 
+
+//Hash Functions
+int HashFunction(int id);
+void BuildHash(Job* table[], int size);
+JobI** AddJobHash(JobI* h, JobI* table[]);
+Job** removeHashJob(int id, Job* table[]);
+Job** InsertOponJob(Job* table[], Operation* operation, int id);
+Job** RemoveOpJob(Job* table[], int order, int id);
+Job** ChangeOp(Job* table[], int id, int order, int machineId, int time);
 #pragma endregion
 
 #endif

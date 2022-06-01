@@ -15,8 +15,6 @@
 #include "Dados.h"
 
 
-
-
 /**
 * @brief Verifica se job existe. Se existir devolve Bool!
 * @param [in] h		Inicio da Lista

@@ -99,3 +99,70 @@ int getavgtime(Job* h) {
 	return ((min + max) / 2);
 }
 
+/**
+*	@brief  Determinar a quantidade minima de tempo pra completar o processplan
+*
+*	Devolve o tempo minimo pra completar o processplan
+*
+*	@param table Inicio da HashTable
+*   @param size tamanho da hashtable
+*
+*/
+int ProcessPlanMinTime(Job* table[], int size) {
+	int result = 0;
+
+	for (int i = 0; i < size; i++) {
+		Job* aux = table[i];
+
+		if (aux == NULL) continue;
+
+		while (aux) {
+			result += getmintime(aux);
+			aux = aux->next;
+		}
+
+	}
+	return result;
+}
+
+/**
+*	@brief  Determinar a quantidade de Jobs existentes
+*
+*	Devolve a quantidade de Jobs existentes
+*
+*	@param h Inicio da Lista
+*
+*/
+
+int numberofJobs(Job* h) {
+	if (h == NULL) return NULL;
+
+	Job* aux = h;
+	int numbjobs = 0;
+	while(aux){ 
+		numbjobs++;
+		aux = aux->next;
+	}
+	return numbjobs;
+}
+/**
+*	@brief  Determinar a quantidade de operacoes num determinado JOB
+*
+*	Devolve a quantidade de operacoes num determinado JOB
+*
+*	@param h Inicio da Lista
+*   @param id Id do job para analisar.
+*
+*/
+int numberofoperationspJob(Job* h, int id) {
+	if (h == NULL) return NULL;
+
+	Job* job = SearchJob(h, id);
+	Job* aux = job->operation;
+	int numbop = 0;
+	while (aux) {
+		numbop++;
+		aux = aux->next;
+	}
+	return numbop;
+}
